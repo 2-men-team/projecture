@@ -1,0 +1,28 @@
+# TODO list [Deadline 15/12/19]
+- [ ] create database scheme (below tables + relations)
+    - [ ] Students
+    - [ ] Projects
+    - [ ] Applications
+    - [ ] Organizations
+    - [ ] Evaluations
+    - [ ] Articles
+    - [ ] Comments
+- [ ] build front-end
+    - [ ] Student/Professor/Mentor/Org Registration
+    - [ ] Authentification system
+    - [ ] Post projects for orgs
+    - [ ] Apply for projects for students
+    - [ ] Profile page
+    - [ ] Application review page
+    - [ ] Comment on projects
+    - [ ] View org projects, org profile
+    - [ ] Home page
+    - [ ] Evaluate students
+- [ ] build back-end
+    - [ ] Build microservice architecture
+        - [ ] Define and implement key components
+    - [ ] Store images and other text data in Cloud
+- [ ] build Android app (?)
+- [ ] buy `projecture.dev` domain
+- [ ] dockerize application
+- [ ] host app on DigitalOcean
