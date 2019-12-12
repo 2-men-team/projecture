@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <header id="gtco-header" class="gtco-cover gtco-cover-xs" role="banner" style="background-image:url(images/img_bg_1.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>{% block title %}Profile{% endblock %}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div id="gtco-features-2">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 animate-box">
+					<form action="#">
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label for="fname">Email address</label>
+								<input value="{{ user['email'] }}"
+                       name="email"
+                       type="email"
+                       id="fname"
+                       class="form-control"
+                       placeholder="Enter email"
+                       disabled>
+							</div>
+						</div>
+
+            <div class="row form-group">
+              <div class="col-md-12">
+                <label for="username">Username</label>
+                <input value="{{ user['username'] }}"
+                       name="username"
+                       class="form-control"
+                       id="username"
+                       placeholder="Enter username"
+                       disabled>
+              </div>
+            </div>
+					</form>
+
+          {% for project in projects %}
+            <div class="row gtco-project-container animate-box">
+              <div class="col-md-12">
+                <div class="gtco-bg">
+                  <h3>{{ project['project_name'] }}</h3>
+                  <h4>{{ project['link'] }}</h4>
+                  <p>{{ markdown.markdown(project['description'])|safe }}</p>
+                  <a class="btn btn-primary my-2 my-sm-0"
+                     href="{{ url_for('project.view', project_id=project['id']) }}"
+                     role="button">
+                    Learn more
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+				</div>
+			</div>
+
+		</div>
+	</div>
+{% endblock %}

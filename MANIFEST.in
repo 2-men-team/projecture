@@ -1,0 +1,4 @@
+include projecture/schema.sql
+graft projecture/static
+graft projecture/templates
+global-exclude *.pyc

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+
+<!--
+The project should contain following data:
+
+- project name
+- posted date
+- posted by
+- assigned tags
+- complexity [1/10]
+
+- project brief description
+- project full description
+
+- links
+
+-->
+
+{% block content %}
+
+	<header id="gtco-header" class="gtco-cover gtco-cover-xs" role="banner" style="background-image:url(images/img_bg_1.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>{% block title %}Create project{% endblock %}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="gtco-section">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 animate-box">
+					<h3>Edit</h3>
+          <div class="row">
+            <div class="col-md-12">
+              {% for message in get_flashed_messages() %}
+                <div class="alert alert-danger" role="alert">{{ message }}</div>
+              {% endfor %}
+            </div>
+          </div>
+					<form method="post">
+						<div class="row form-group">
+							<div class="col-md-6">
+                <label for="project-name">Project name</label>
+                <input name="project_name"
+                       type="text"
+                       class="form-control"
+                       id="project-name"
+                       placeholder="Enter project name"
+                       required>
+							</div>
+							<div class="col-md-6">
+                <label for="project-link">Project link</label>
+                <input name="link" type="text" class="form-control" id="project-link" required placeholder="Link">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+                <label for="complexity">Complexity on 0-10 scale</label>
+                <input name="complexity" type="range" class="form-control-range" id="complexity" min="0" max="10">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12">
+                <label for="project-desc">Description</label>
+                <textarea class="form-control"
+                          name="description"
+                          id="project-desc"
+                          cols="30"
+                          rows="10"
+                          placeholder="Enter project description"></textarea>
+							</div>
+						</div>
+
+            <div class="form-group">
+							<input type="submit" value="Create" class="btn btn-primary">
+						</div>
+
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+    <script src="{{ url_for('static', filename='js/markdown-js-0.5.0/lib/markdown.js') }}"></script>
+    <script>
+      function Editor(input, preview) {
+        this.update = () => {
+          preview.innerHTML = markdown.toHTML(input.value);
+        };
+        input.editor = this;
+        this.update();
+      }
+      let getId = id => document.getElementById(id);
+      new Editor(getId("project-desc"), getId("preview"));
+    </script>
+{% endblock %}

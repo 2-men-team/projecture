@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <header id="gtco-header" class="gtco-cover gtco-cover-xs" role="banner" style="background-image:url(images/img_bg_1.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>{% block title %}Sign In{% endblock %}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="gtco-section">
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-12 animate-box">
+					<h3 class="text-center">Sign In</h3>
+          {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger" role="alert">{{ message }}</div>
+          {% endfor %}
+					<form method="post">
+
+						<div class="form-group">
+								<label for="fname">Email address</label>
+								<input name="email" type="email" id="fname" class="form-control" placeholder="Enter email" required>
+						</div>
+
+						<div class="form-group">
+								<label for="password">Password</label>
+								<input name="password" type="password" id="password" class="form-control" placeholder="Password" required>
+						</div>
+
+						<button type="submit" class="btn btn-primary">Sign In</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

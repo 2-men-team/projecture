@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Projects{% endblock %}
+
+{% block content %}
+
+	<header id="gtco-header" class="gtco-cover gtco-cover-xs" role="banner" style="background-image:url(images/img_bg_1.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>Projects</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+  <div id="gtco-features-2">
+    <div class="gtco-container">
+      {% if g.user %}
+        <div class="row gtco-project-container animate-box">
+          <div class="col-md-12">
+            <div class="gtco-bg">
+              <a class="btn btn-primary my-2 my-sm-0"
+                 href="{{ url_for('project.create') }}"
+                 role="button">
+                New
+              </a>
+              <h4 style="display:inline;">Post project.</h4>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+
+      {% for project in projects %}
+        <div class="row gtco-project-container animate-box">
+          <div class="col-md-12">
+            <div class="gtco-bg">
+              <h3>{{ project['project_name'] }}</h3>
+              <h4>{{ project['link'] }}</h4>
+              <h4>{{ project['post_time_stamp'] }}</h4>
+              <p>{{ markdown.markdown(project['description'])|safe }}</p>
+              <a class="btn btn-primary my-2 my-sm-0"
+                 href="{{ url_for('project.view', project_id=project['id']) }}"
+                 role="button">
+                Learn more
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/markdown-js-0.5.0/lib/markdown.js') }}"></script>
+  <script>
+
+  </script>
+{% endblock %}

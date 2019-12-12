@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ project['project_name'] }}
+{% endblock %}
+
+{% block content %}
+
+  <header id="gtco-header" class="gtco-cover gtco-cover-xs" role="banner" style="background-image:url(images/img_bg_1.jpg);">
+		<div class="overlay"></div>
+		<div class="gtco-container">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 text-center">
+					<div class="display-t">
+						<div class="display-tc animate-box" data-animate-effect="fadeIn">
+							<h1>{{ project['project_name'] }}</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+  <div id="gtco-features-2">
+    <div class="gtco-container">
+      <div class="row gtco-project-container animate-box">
+        <div class="col-md-12">
+          <div class="gtco-bg">
+            <h3>{{ project['project_name'] }}</h3>
+            <h4>{{ project['link'] }}</h4>
+            <h4>{{ project['post_time_stamp'] }}</h4>
+            <p>{{ markdown.markdown(project['description'])|safe }}</p>
+            {% if g.user and project['posted_by'] == g.user['id'] %}
+              <a class="btn btn-primary my-2 my-sm-0" href="{{ url_for('project.update', id=project['id']) }}" role="button">
+                Edit
+              </a>
+              <a class="btn btn-primary my-2 my-sm-0" href="{{ url_for('project.delete', id=project['id']) }}" role="button">
+                Delete
+              </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

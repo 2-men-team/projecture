@@ -1,0 +1,39 @@
+body {
+    background: light !important;
+}
+
+.navbar-nav > li {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.nav-link {
+    color: white !important;
+}
+
+.mt10
+.mt50 { margin-top: 50px; }
+.mt25 { margin-top: 25px; }
+.mtb10 { margin: 10px auto; }
+
+.block-post {
+    margin-top: 25px;
+    padding: 25px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 2px #fff inset,
+              -1px -1px 2px #fff inset;
+    border-radius: 3px/6px;
+}
+
+.form-block {
+    margin: 0 auto;
+    padding: 25px;
+    width: 50%;
+    height: 50%;
+    margin-top: 50px;;
+}
+
+textarea {
+   min-height: 20px;
+   resize: none;
+}
